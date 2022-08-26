@@ -17,8 +17,10 @@ namespace BlogWithMongo_BackEnd.Controllers
         }
 
         [HttpGet]
-        public async Task<List<User>> GetUsers()
-            => await _userServices.GetAsync();
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        {
+            return await _userServices.GetAsync();
+        }
 
         [HttpPost]
         public async Task<User> UserUser(User user)

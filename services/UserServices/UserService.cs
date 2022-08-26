@@ -14,7 +14,7 @@ namespace BlogWithMongo_BackEnd.UserServices
             var mongoClient = new MongoClient(userServices.Value.ConnectionString);
             var mongoDatabase = mongoClient.GetDatabase(userServices.Value.DatabaseName);
 
-            _userCollection = mongoDatabase.GetCollection<User>(userServices.Value.UserCollectionName);
+            _userCollection = mongoDatabase.GetCollection<User>(userServices.Value.CollectionName);
         }
 
         public async Task<List<User>> GetAsync() =>
@@ -30,5 +30,11 @@ namespace BlogWithMongo_BackEnd.UserServices
             await _userCollection.ReplaceOneAsync(x => x.Id == id, user);
         public async Task RemoveAsync(string id) =>
             await _userCollection.DeleteOneAsync(x => x.Id == id);
+
+        // public async Task<User> LogarAsync(string email, string passWord)
+        // {
+        //   var condition1 =  await _userCollection.Find(_ => _.Email == email).FirstOrDefaultAsync();
+        //   var condition2= await _userCollection.Find(_ => _.PassWord == passWord).FirstOrDefaultAsync();
+        // }
     }
 }

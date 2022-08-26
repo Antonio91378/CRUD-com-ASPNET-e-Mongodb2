@@ -1,8 +1,6 @@
-using BlogWithMongo_BackEnd.Database;
-
-namespace BlogWithMongo_BackEnd.UserServices
+namespace BlogWithMongo_BackEnd.Database
 {
-    public class UserDatabaseSettings : IDatabaseSettings
+    public interface IDatabaseSettings
     {
         public string CollectionName { get; set; }
         public string ConnectionString { get; set; }
