@@ -2,15 +2,14 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using BlogWithMongo_BackEnd.Models;
-using BlogWithMongo_BackEnd.UserServices;
 
-namespace BlogWithMongo_BackEnd.UsersService
+namespace BlogWithMongo_BackEnd.UserServices
 {
-    public class Pateta
+    public class UserService
     {
         private readonly IMongoCollection<User> _userCollection;
 
-        public Pateta(IOptions<UserDatabaseSettings> userServices)
+        public UserService(IOptions<UserDatabaseSettings> userServices)
         {
             var mongoClient = new MongoClient(userServices.Value.ConnectionString);
             var mongoDatabase = mongoClient.GetDatabase(userServices.Value.DatabaseName);

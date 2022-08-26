@@ -1,20 +1,18 @@
 
 
-using BlogWithMongo_BackEnd.Controllers;
 using BlogWithMongo_BackEnd.UserServices;
-using BlogWithMongo_BackEnd.UsersService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<UserDatabaseSettings>
+    (builder.Configuration.GetSection("UsersDatabase"));
+builder.Services.AddSingleton<UserService>(); // ==========> importante kkkk
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<Pateta, UsersController>();
-builder.Services.Configure<UserDatabaseSettings>
-    (builder.Configuration.GetSection("UsersDatabase"));
 
 var app = builder.Build();
 

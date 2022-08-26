@@ -1,16 +1,17 @@
 
 using BlogWithMongo_BackEnd.Models;
 using Microsoft.AspNetCore.Mvc;
-using BlogWithMongo_BackEnd.UsersService;
+using BlogWithMongo_BackEnd.UserServices;
+
 namespace BlogWithMongo_BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly Pateta _userServices;
+        private readonly UserService _userServices;
 
-        public UsersController(Pateta userServices)
+        public UsersController(UserService userServices)
         {
             _userServices = userServices;
         }
