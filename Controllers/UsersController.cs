@@ -28,8 +28,8 @@ namespace BlogWithMongo_BackEnd.Controllers
             await _userServices.CreateAsync(user);
             return user;
         }
-
-        [HttpPatch]
+        //colocar todos os campos, inclusive o Id
+        [HttpPut]
         public async Task UpdateUser(string id, User user)
         {
             await _userServices.UpdateAsync(id, user);
