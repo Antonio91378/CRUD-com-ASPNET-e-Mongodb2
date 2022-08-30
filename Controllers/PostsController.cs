@@ -27,7 +27,7 @@ namespace BlogWithMongo_BackEnd.Controllers
             return post;
         }
 
-        [HttpPatch]
+        [HttpPut]
         public async Task UpdatePost(string id, Post post)
         {
             await _postServices.UpdateAsync(id, post);
