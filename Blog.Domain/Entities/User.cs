@@ -15,6 +15,9 @@ namespace API.Blog.BackEnd.Domain.Entities
         [BsonElement("email")]
         [BsonRepresentation(BsonType.String)]
         public string Email { get; set; }
+        [BsonElement("nome")]
+        [BsonRepresentation(BsonType.String)]
+        public string Nome { get; set; }
 
         [BsonElement("password")]
         [BsonRepresentation(BsonType.String)]
