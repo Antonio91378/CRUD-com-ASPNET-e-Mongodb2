@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/BlogWithMongo.csproj",
+                "${workspaceFolder}/Blog.BackEnd/API.Blog.BackEnd.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/BlogWithMongo.csproj",
+                "${workspaceFolder}/Blog.BackEnd/API.Blog.BackEnd.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/BlogWithMongo.csproj"
+                "${workspaceFolder}/Blog.BackEnd/API.Blog.BackEnd.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
