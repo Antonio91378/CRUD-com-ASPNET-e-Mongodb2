@@ -11,12 +11,10 @@ namespace API.Blog.BackEnd.Controllers
     public class UsersController : ControllerBase
     {
         readonly IUserService _userService;
-        readonly IMapper _mapper;
 
-        public UsersController(IUserService userService, IMapper mapper)
+        public UsersController(IUserService userService)
         {
             _userService = userService;
-            _mapper = mapper;
         }
         [HttpGet]
         [Route("/users")]
