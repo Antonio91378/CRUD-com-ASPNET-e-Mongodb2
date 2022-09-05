@@ -1,12 +1,15 @@
+using Blog.Domain.Interfaces;
+using Blog.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 // Swagger
-builder.Services.AddSwaggerGen();  
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 

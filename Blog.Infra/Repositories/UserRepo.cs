@@ -1,5 +1,6 @@
 ﻿using API.Blog.BackEnd.Domain.Entities;
 using API.Blog.BackEnd.Domain.Interfaces;
+using API.Blog.BackEnd.Infra.Contexts;
 using MongoDB.Driver;
 
 namespace API.Blog.BackEnd.Infra.Repositories
@@ -8,9 +9,9 @@ namespace API.Blog.BackEnd.Infra.Repositories
     {
         private readonly IContext _context;
 
-        public UserRepo(IContext context)
+        public UserRepo()
         {
-            _context = context;
+            _context = new Context();
         }
 
         public async Task CreateUserAsync(User user)

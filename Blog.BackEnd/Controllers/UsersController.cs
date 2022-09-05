@@ -37,6 +37,7 @@ namespace API.Blog.BackEnd.Controllers
                 problemDetails.Instance = HttpContext.Request.Path;
                 return NotFound(problemDetails);
             }
+
             return Ok(users);
         }
         [HttpGet]
@@ -61,7 +62,7 @@ namespace API.Blog.BackEnd.Controllers
             return Ok(user);
         }
         [HttpPost]
-        [Route("/assistencia")]
+        [Route("/users")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

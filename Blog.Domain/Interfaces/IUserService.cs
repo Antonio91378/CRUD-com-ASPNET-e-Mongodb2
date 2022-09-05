@@ -8,8 +8,8 @@ namespace Blog.Domain.Interfaces
     {
         Task CreateUserAsync(User user);
         Task<List<User>> DisplayAllUsersAsync();
-        Task<UserResponseDto> DisplayUserByIdAsync(string id);
-        Task UpdateUserByIdAsync(User user);
+        Task<User> DisplayUserByIdAsync(string id);
+        Task UpdateUserByIdAsync(User user, string Id);
         Task DeleteUserByIdAsync(string id);
     }
 }

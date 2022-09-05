@@ -14,10 +14,9 @@ namespace API.Blog.BackEnd.Infra.Contexts
         public Context()
         {
             var client = new MongoClient(ApplicationSettings.GetMongoDBConnectionString());
+     
             var DataBase = client.GetDatabase("Blog");
             User = DataBase.GetCollection<User>("Users");
-            Post = DataBase.GetCollection<Post>("Posts");
-
         }
     }
 }

@@ -11,4 +11,9 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Domain\API.Blog.BackEnd.Domain.csproj" />
+    <ProjectReference Include="..\Blog.Infra\API.Blog.BackEnd.Infra.csproj" />
+  </ItemGroup>
+
 </Project>
