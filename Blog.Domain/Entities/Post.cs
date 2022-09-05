@@ -20,7 +20,5 @@ namespace API.Blog.BackEnd.Domain.Entities
         public string Content { get; set; }
         [BsonElement("tags")]
         public List<string> Tags { get; set; }
-        [BsonElement("content")]
-        public List<Comment> Comments { get; set; }
     }
 }

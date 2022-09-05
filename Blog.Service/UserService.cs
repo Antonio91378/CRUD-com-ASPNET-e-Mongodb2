@@ -3,8 +3,6 @@ using API.Blog.BackEnd.Domain.Interfaces;
 using API.Blog.BackEnd.Domain.Entities;
 using Blog.Domain.Interfaces;
 using API.Blog.BackEnd.Infra.Repositories;
-using Blog.Domain.Dto.Request;
-using Blog.Domain.Dto.Response;
 
 namespace Blog.Service
 {

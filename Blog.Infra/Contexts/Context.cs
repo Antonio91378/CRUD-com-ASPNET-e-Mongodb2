@@ -5,18 +5,19 @@ using Blog.Utils;
 
 namespace API.Blog.BackEnd.Infra.Contexts
 {
-    internal class Context : IContext
+    public class Context : IContext
     {
 
-        public IMongoCollection<User> User { get; }
-        public IMongoCollection<Post> Post { get; }
+        public IMongoCollection<User> Users { get; }
+        public IMongoCollection<Post> Posts { get; }
 
         public Context()
         {
             var client = new MongoClient(ApplicationSettings.GetMongoDBConnectionString());
-     
+            var x = client;
             var DataBase = client.GetDatabase("Blog");
-            User = DataBase.GetCollection<User>("Users");
+            Users = DataBase.GetCollection<User>("Users");
+            Posts = DataBase.GetCollection<Post>("Posts");
         }
     }
 }

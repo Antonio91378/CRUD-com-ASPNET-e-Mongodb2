@@ -11,33 +11,33 @@ namespace API.Blog.BackEnd.Infra.Repositories
 
         public UserRepo()
         {
-            _context = new Context();
+            _context =new Context();
         }
 
         public async Task CreateUserAsync(User user)
         {
-            await _context.User.InsertOneAsync(user);
+            await _context.Users.InsertOneAsync(user);
         }
 
         public async Task<List<User>> DisplayAllUsersAsync()
         {
-            var users = await _context.User.FindAsync(_ => true);
+            var users = await _context.Users.FindAsync( user => true);
             return users.ToList();
         }
 
         public async Task<User> DisplayUserByIdAsync(string id)
         {
-            var user = await _context.User.Find(_ => _.Id == id).FirstOrDefaultAsync();
+            var user = await _context.Users.Find(_ => _.Id == id).FirstOrDefaultAsync();
             return user;
         }
 
         public async Task UpdateUserByIdAsync(User user)
         {
-            await _context.User.ReplaceOneAsync(_ => _.Id == user.Id, user, new UpdateOptions { IsUpsert = true });
+            await _context.Users.ReplaceOneAsync(_ => _.Id == user.Id, user, new UpdateOptions { IsUpsert = true });
         }
         public async Task DeleteUserByIdAsync(string id)
         {
-            await _context.User.DeleteOneAsync(_ => _.Id == id);
+            await _context.Users.DeleteOneAsync(_ => _.Id == id);
         }
     }
 }

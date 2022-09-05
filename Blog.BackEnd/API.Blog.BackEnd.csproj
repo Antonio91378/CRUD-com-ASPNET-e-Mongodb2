@@ -8,7 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Dtos\" />
+    <Compile Remove="Data\**" />
+    <Content Remove="Data\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <None Remove="Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Mapper\" />
   </ItemGroup>
 
@@ -26,7 +32,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Blog.Domain\API.Blog.BackEnd.Domain.csproj" />
     <ProjectReference Include="..\Blog.Service\API.Blog.BackEnd.Service.csproj" />
-    <ProjectReference Include="..\Blog.Utils\API.Blog.BackEnd.Utils.csproj" />
   </ItemGroup>
 
 </Project>
