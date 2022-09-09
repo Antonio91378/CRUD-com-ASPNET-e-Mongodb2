@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Remote.Linq.Newtonsoft.Json" Version="7.0.0" />
     <ProjectReference Include="..\Blog.Domain\API.Blog.BackEnd.Domain.csproj" />
     <ProjectReference Include="..\Blog.Utils\API.Blog.BackEnd.Utils.csproj" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.1" />

@@ -1,5 +1,6 @@
 
 
+using API.Blog.BackEnd.Domain.Enum;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.IdGenerators;
@@ -21,7 +22,7 @@ namespace API.Blog.BackEnd.Domain.Entities
 
         [BsonElement("password")]
         [BsonRepresentation(BsonType.String)]
-
         public string PassWord { get; set; }
+
     }
 }
