@@ -10,7 +10,7 @@ namespace API.Blog.BackEnd.Domain.Entities
     {
         [BsonId(IdGenerator = typeof(StringObjectIdGenerator))]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         [BsonElement("email")]
         [BsonRepresentation(BsonType.String)]

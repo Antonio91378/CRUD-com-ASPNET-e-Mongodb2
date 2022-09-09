@@ -5,7 +5,7 @@ namespace Blog.Utils
         public static string GetMongoDBConnectionString()
         {
             var configuration = new Configuration();
-            return configuration.ConfiguracaoDoArquivoAppSettings["UsersDatabase:ConnectionString"];
+            return configuration.ConfiguracaoDoArquivoAppSettings["Database:ConnectionString"];
         }
     }
 }

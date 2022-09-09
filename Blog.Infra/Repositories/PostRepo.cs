@@ -4,7 +4,7 @@ using MongoDB.Driver;
 
 namespace Blog.Infra.Repositories
 {
-    public class PostRepo
+    public class PostRepo : IPostRepo
     {
         private readonly IContext _context;
 
@@ -30,10 +30,6 @@ namespace Blog.Infra.Repositories
             return Post;
         }
 
-        public async Task UpdatePostByIdAsync(Post Post)
-        {
-            await _context.Posts.ReplaceOneAsync(_ => _.Id == Post.Id, Post, new UpdateOptions { IsUpsert = true });
-        }
         public async Task DeletePostByIdAsync(string id)
         {
             await _context.Posts.DeleteOneAsync(_ => _.Id == id);
