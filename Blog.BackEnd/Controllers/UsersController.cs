@@ -1,7 +1,6 @@
 
 using System.Net;
 using API.Blog.BackEnd.Domain.Entities;
-using AutoMapper;
 using Blog.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 namespace API.Blog.BackEnd.Controllers

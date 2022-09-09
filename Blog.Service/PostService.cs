@@ -10,11 +10,11 @@ namespace Blog.Service
     public class PostService : IPostService
     {
         private readonly IPostRepo _postRepo;
-
-        public PostService(PostRepo postRepo)
+        public PostService()
         {
-            _postRepo = postRepo;
+            _postRepo = new PostRepo();
         }
+
 
         public async Task CreatePostAsync(Post post)
         {
