@@ -7,8 +7,13 @@ namespace API.Blog.BackEnd.Infra.Contexts
     {
         public Context2(DbContextOptions options) : base(options)
         {
+          
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Comment>();
         }
 
-        public DbSet<Comment>? comments { get; set; }
+        public DbSet<Comment> comments { get; set; }
     }
 }

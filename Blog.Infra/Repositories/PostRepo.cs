@@ -35,9 +35,9 @@ namespace Blog.Infra.Repositories
                         .Add("_id", 0)
                         .Add("Posts", "$$ROOT")),
                 new BsonDocument("$lookup", new BsonDocument()
-                        .Add("localField", "Posts.autor")
+                        .Add("localField", "Posts.codigoPost")
                         .Add("from", "Users")
-                        .Add("foreignField", "nome")
+                        .Add("foreignField", "codigoUser")
                         .Add("as", "Users")),
                 new BsonDocument("$unwind", new BsonDocument()
                         .Add("path", "$User")
@@ -52,7 +52,7 @@ namespace Blog.Infra.Repositories
                         .Add("_id", 0))
             };
 
-            var listPosts = new List<Post>();
+            List<Post> listPosts = new List<Post>();
             using (var cursor = await _context.Posts.AggregateAsync(pipeline, options))
             {
                 while (await cursor.MoveNextAsync())
@@ -61,7 +61,7 @@ namespace Blog.Infra.Repositories
                     foreach (BsonDocument document in batch)
                     {
                         JObject jObject = JObject.Parse(document.ToJson().Replace("_id", "id").Replace("ObjectId(", "").Replace(")", ""));
-                        var somenteOfertas = jObject["Ofertas"].ToString();
+                        var somenteOfertas = jObject["Posts"].ToString();
                         var adicionando = JsonConvert.DeserializeObject<Post>(somenteOfertas);
                         listPosts.Add(adicionando);
                     }

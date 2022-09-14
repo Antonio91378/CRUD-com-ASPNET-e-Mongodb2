@@ -1,5 +1,8 @@
+using API.Blog.BackEnd.ConfigExtensions;
+using API.Blog.BackEnd.Infra.Contexts;
 using Blog.Domain.Interfaces;
 using Blog.Service;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +15,10 @@ builder.Services.AddEndpointsApiExplorer();
 // Swagger
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<Context2>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("API.Blog.BackEnd")));
 var app = builder.Build();
+
+DataBaseManagementService.MigrationInitialisation(app);
 
 app.MapControllers();
 

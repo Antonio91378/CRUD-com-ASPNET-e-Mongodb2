@@ -12,6 +12,9 @@ namespace API.Blog.BackEnd.Domain.Entities
         [BsonElement("autor")]
         [BsonRepresentation(BsonType.String)]
         public string Autor { get; set; }
+        [BsonElement("codigoPost")]
+        [BsonRepresentation(BsonType.Int32)]
+        public int CodigoPost { get; set; }
         [BsonElement("title")]
         [BsonRepresentation(BsonType.String)]
         public string Title { get; set; }
