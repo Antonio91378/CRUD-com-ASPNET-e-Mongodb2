@@ -8,10 +8,13 @@ namespace API.Blog.BackEnd.Domain.Entities
     {
         [BsonId(IdGenerator = typeof(StringObjectIdGenerator))]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
         [BsonElement("autor")]
         [BsonRepresentation(BsonType.String)]
         public string Autor { get; set; }
+        [BsonElement("codigoPost")]
+        [BsonRepresentation(BsonType.Int32)]
+        public int CodigoPost { get; set; }
         [BsonElement("title")]
         [BsonRepresentation(BsonType.String)]
         public string Title { get; set; }
@@ -20,7 +23,5 @@ namespace API.Blog.BackEnd.Domain.Entities
         public string Content { get; set; }
         [BsonElement("tags")]
         public List<string> Tags { get; set; }
-        [BsonElement("content")]
-        public List<Comment> Comments { get; set; }
     }
 }

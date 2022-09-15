@@ -10,7 +10,7 @@ namespace API.Blog.BackEnd.Domain.Interfaces
 {
     public interface IContext
     {
-        public IMongoCollection<User> User { get; }
-        public IMongoCollection<Post> Post { get; }
+        public IMongoCollection<User> Users { get; }
+        public IMongoCollection<Post> Posts { get; }
     }
 }
