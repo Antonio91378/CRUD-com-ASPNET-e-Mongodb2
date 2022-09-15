@@ -1,4 +1,6 @@
-﻿using API.Blog.BackEnd.Infra.Contexts;
+﻿
+
+using API.Blog.BackEnd.Infra.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Blog.BackEnd.ConfigExtensions
