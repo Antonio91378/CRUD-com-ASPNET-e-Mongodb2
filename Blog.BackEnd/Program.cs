@@ -17,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<Context2>(options =>
-        options.UseSqlServer(ApplicationSettings.GetConnectionStringEntity()));
+        options.UseSqlServer("Initial Catalog=LivrosDB; Data Source=localhost,1450; Persist Security Info=True;User ID=SA;PassWord= 2Secure*Password2", b => b.MigrationsAssembly("API.Blog.BackEnd")));
 
 var app = builder.Build();
 

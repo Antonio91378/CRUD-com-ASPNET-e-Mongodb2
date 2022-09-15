@@ -11,7 +11,7 @@ namespace API.Blog.BackEnd.Infra.Contexts
         {
         }
 
-        protected Context2()
+        public Context2()
         {
         }
 
