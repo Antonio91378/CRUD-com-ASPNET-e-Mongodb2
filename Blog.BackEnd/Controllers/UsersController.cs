@@ -43,7 +43,7 @@ namespace API.Blog.BackEnd.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> DisplayUsers(string id)
+        public async Task<IActionResult> DisplayUser(string id)
         {
             var user = await _userService.DisplayUserByIdAsync(id);
             if (user is null)

@@ -7,10 +7,10 @@ namespace API.Blog.BackEnd.Infra.Repositories
 {
     public class CommentRepo : ICommentRepo
     {
-        private Context2 ContextEF { get; }
+        private readonly Context2 ContextEF;
         public CommentRepo()
         {
-            this.ContextEF = new Context2();
+            ContextEF = new Context2();
         }
 
     

@@ -8,7 +8,8 @@ namespace API.Blog.BackEnd.Domain.Entities
         [Key]
         public Guid? Id { get; set; } 
         public string Autor { get; set; }
-        public string Conteudo { get; set; }
-        public DateTime DataCriacao { get; set; }
+        public string Content { get; set; }
+        public List<string> RepliedContents { get; set; }
+        public DateTime CriationData { get; set; }
     }
 }
