@@ -14,6 +14,8 @@ builder.Services.AddScoped<IPostService, PostService>();
 
 builder.Services.AddScoped<ICommentRepo, CommentRepo>();
 
+builder.Services.AddScoped<IRepliedCommentRepo, RepliedCommentRepo>();
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
