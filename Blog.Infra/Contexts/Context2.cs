@@ -1,7 +1,5 @@
 ﻿using API.Blog.BackEnd.Domain.Entities;
-using Blog.Utils;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace API.Blog.BackEnd.Infra.Contexts
 {
@@ -15,21 +13,28 @@ namespace API.Blog.BackEnd.Infra.Contexts
         {
         }
 
-        public DbSet<Comment>? Comments { get; set; }
+        public virtual DbSet<Comment>? Comments { get; set; }
+        public virtual DbSet<RepliedComment>? RepliedComments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(ApplicationSettings.GetConnectionStringEntity());
+                optionsBuilder.UseSqlServer("Initial Catalog=CommentsDB; Data Source=localhost,1450; Persist Security Info=True;User ID=SA;PassWord= 2Secure*Password2");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Comment>();
+            modelBuilder.Entity<Comment>()
+             .HasMany<RepliedComment>(x => x.RepliedComments)
+              .WithOne(x => x.CurrentComment)
+               .HasForeignKey(z => z.IdComment);
 
-            OnModelCreatingPartial(modelBuilder);
-            }
-            partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+            modelBuilder.Entity<RepliedComment>()
+             .HasOne<Comment>(s => s.CurrentComment)
+              .WithMany(g => g.RepliedComments)
+               .HasForeignKey(s => s.IdComment);
+        }
     }
 }
