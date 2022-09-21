@@ -5,7 +5,7 @@ using API.Blog.BackEnd.Infra.Repositories;
 using Blog.Domain.Interfaces;
 using Blog.Service;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +15,8 @@ builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<ICommentRepo, CommentRepo>();
 
 builder.Services.AddScoped<IRepliedCommentRepo, RepliedCommentRepo>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers();
 
