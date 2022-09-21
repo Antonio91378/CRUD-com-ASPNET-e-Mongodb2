@@ -1,6 +1,5 @@
 
 using API.Blog.BackEnd.Domain.Entities;
-using Blog.Domain.Dto.Response;
 
 namespace Blog.Domain.Interfaces
 {

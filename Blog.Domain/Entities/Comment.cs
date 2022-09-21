@@ -8,10 +8,10 @@ namespace API.Blog.BackEnd.Domain.Entities
     {
         [Key]
         [Column("IdComment")]
-        public Guid? Id { get; set; } 
+        public Guid Id { get; set; } 
         public string Autor { get; set; }
         public string CurrentComment { get; set; }
-        public ICollection<RepliedComment>? RepliedComments { get; set; }
+        public List<RepliedComment>? RepliedComments { get; set; }
         public DateTime CriationData { get; set; }
     }
 }

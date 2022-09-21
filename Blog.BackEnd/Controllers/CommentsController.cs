@@ -1,4 +1,5 @@
-﻿using API.Blog.BackEnd.Domain.Entities;
+﻿using API.Blog.BackEnd.Domain.Dto.Request;
+using API.Blog.BackEnd.Domain.Entities;
 using API.Blog.BackEnd.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -65,12 +66,12 @@ namespace API.Blog.BackEnd.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateComment([FromBody] Comment comment)
+        public async Task<IActionResult> CreateComment([FromBody] CreateCommentDto comment)
         {
             if (comment != null)
             {
-                await _commentRepo.CreateCommentAsync(comment);
-                return StatusCode((int)HttpStatusCode.Created, comment);
+                var res = await _commentRepo.CreateCommentAsync(comment);
+                return StatusCode((int)HttpStatusCode.Created, res);
             }
             else
             {

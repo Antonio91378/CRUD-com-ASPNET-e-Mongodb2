@@ -48,31 +48,19 @@ namespace API.Blog.BackEnd.Controllers
         {
 
             var res = await _repliedCommentRepo.CreateCommentAsync(repliedComment);
-            return Ok(res);
-        }
-
-        private IActionResult Retorno(ReturnDto retornoDto)
-        {
-            if (retornoDto.HouveErro == false)
+            if (res is not null)
             {
-                if (retornoDto.ObjetoRetorno is not null)
-                {
-                    return Ok(retornoDto.ObjetoRetorno);
-                }
-                else
-                {
-                    ProblemDetails detalhesDoProblema = new ProblemDetails();
-                    detalhesDoProblema.Status = StatusCodes.Status404NotFound;
-                    detalhesDoProblema.Type = "NotFound";
-                    detalhesDoProblema.Title = "Registro não Encontrado";
-                    detalhesDoProblema.Detail = $"Não foram encontrados registros. ";
-                    detalhesDoProblema.Instance = HttpContext.Request.Path;
-                    return NotFound(detalhesDoProblema);
-                }
+                return Ok(res);
             }
             else
             {
-                return retornoDto.RetornarResultado(HttpContext.Request.Path);
+                ProblemDetails detalhesDoProblema = new ProblemDetails();
+                detalhesDoProblema.Status = StatusCodes.Status404NotFound;
+                detalhesDoProblema.Type = "NotFound";
+                detalhesDoProblema.Title = "Registro não Encontrado";
+                detalhesDoProblema.Detail = $"Não foram encontrados registros. ";
+                detalhesDoProblema.Instance = HttpContext.Request.Path;
+                return NotFound(detalhesDoProblema);
             }
         }
     }

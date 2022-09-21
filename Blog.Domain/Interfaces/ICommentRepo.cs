@@ -1,16 +1,12 @@
-﻿using API.Blog.BackEnd.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using API.Blog.BackEnd.Domain.Dto.Request;
+using API.Blog.BackEnd.Domain.Entities;
 
 namespace API.Blog.BackEnd.Domain.Interfaces
 {
     public interface ICommentRepo
     {
-        Task<Guid?> CreateCommentAsync(Comment comment);
-        Task<List<Comment?>> DisplayAllCommentAsync();
+        Task<Comment> CreateCommentAsync(CreateCommentDto comment);
+        Task<List<Comment>> DisplayAllCommentAsync();
         Task<Comment> DisplayCommentByIdAsync(Guid id);
         Task<bool> DeleteCommentByIdAsync(Guid id);
     }
