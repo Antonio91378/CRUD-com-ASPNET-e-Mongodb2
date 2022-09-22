@@ -20,8 +20,11 @@ namespace API.Blog.BackEnd.Infra.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
+
                 optionsBuilder.UseSqlServer("Initial Catalog=CommentsDB; Data Source=localhost,1450; Persist Security Info=True;User ID=SA;PassWord= 2Secure*Password2");
+
             }
+            
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
