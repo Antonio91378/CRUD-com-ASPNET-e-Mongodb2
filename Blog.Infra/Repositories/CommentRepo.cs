@@ -1,4 +1,5 @@
 ﻿using API.Blog.BackEnd.Domain.Dto.Request;
+using API.Blog.BackEnd.Domain.Dto.Response;
 using API.Blog.BackEnd.Domain.Entities;
 using API.Blog.BackEnd.Domain.Interfaces;
 using API.Blog.BackEnd.Infra.Contexts;
@@ -36,14 +37,22 @@ namespace API.Blog.BackEnd.Infra.Repositories
             return true;
         }
 
-        public async Task<List<Comment>> DisplayAllCommentAsync() => ContextEF.Comments.ToList();
-
-        public async Task<Comment> DisplayCommentByIdAsync(Guid id)
+        public async Task<List<ReadCommentDto>> DisplayAllCommentAsync()
         {
+            List<Comment> comments = ContextEF.Comments.ToList();
+            List<ReadCommentDto> readComments = _mapper.Map<List<ReadCommentDto>>(comments);
+            return readComments;
+        }
 
-            var foundComment = ContextEF.Comments.FirstOrDefault(x => x.Id == id);
-            return foundComment;
-
+        public async Task<ReadCommentDto> DisplayCommentByIdAsync(Guid id)
+        {
+            Comment comment = ContextEF.Comments.FirstOrDefault(comment => comment.Id == id);
+            if(comment is not null)
+            {
+                ReadCommentDto readComment = _mapper.Map<ReadCommentDto>(comment);
+                return readComment;
+            }
+            throw new NotImplementedException();
         }
         
         

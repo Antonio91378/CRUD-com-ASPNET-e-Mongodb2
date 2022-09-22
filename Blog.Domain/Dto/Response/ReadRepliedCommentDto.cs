@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using API.Blog.BackEnd.Domain.Entities;
+
 
 namespace API.Blog.BackEnd.Domain.Dto.Response
 {
     public class ReadRepliedCommentDto
     {
         public string Autor { get; set; }
-        public string CurrentComment { get; set; }
+        public Comment CurrentComment { get; set; }
+        public string Content { get; set; }
+        public DateTime CriationData { get; set; }
     }
 }

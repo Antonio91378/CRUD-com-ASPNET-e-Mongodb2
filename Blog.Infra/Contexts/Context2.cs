@@ -25,14 +25,8 @@ namespace API.Blog.BackEnd.Infra.Contexts
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Comment>()
-             .HasMany<RepliedComment>(x => x.RepliedComments)
-              .WithOne(x => x.CurrentComment)
-               .HasForeignKey(z => z.IdComment);
-
-
             modelBuilder.Entity<RepliedComment>()
-             .HasOne<Comment>(s => s.CurrentComment)
+             .HasOne(s => s.CurrentComment)
               .WithMany(g => g.RepliedComments)
                .HasForeignKey(s => s.IdComment);
         }

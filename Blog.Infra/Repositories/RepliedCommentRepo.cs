@@ -1,4 +1,5 @@
 ﻿using API.Blog.BackEnd.Domain.Dto.Request;
+using API.Blog.BackEnd.Domain.Dto.Response;
 using API.Blog.BackEnd.Domain.Entities;
 using API.Blog.BackEnd.Domain.Interfaces;
 using API.Blog.BackEnd.Infra.Contexts;
@@ -17,7 +18,7 @@ namespace API.Blog.BackEnd.Domain.Interfaces
             ContextEF = new Context2();
         }
 
-        public async Task<IEnumerable<RepliedComment>> CreateCommentAsync(CreateRepliedCommentDto repliedComment)
+        public async Task<List<ReadRepliedCommentDto>> CreateCommentAsync(CreateRepliedCommentDto repliedComment)
         {
             RepliedComment comment = _mapper.Map<RepliedComment>(repliedComment);
             ContextEF.RepliedComments.Add(comment);
@@ -25,10 +26,16 @@ namespace API.Blog.BackEnd.Domain.Interfaces
             var filteredComments = await DisplayAllCommentAsync(comment.IdComment);
             return filteredComments;
         }
-        public async Task<IEnumerable<RepliedComment>> DisplayAllCommentAsync(Guid id)
+        public async Task<List<ReadRepliedCommentDto>> DisplayAllCommentAsync(Guid id)
         {
-           var rComments = ContextEF.RepliedComments.Where(x => x.IdComment == id).ToList();
-            return rComments;
+           var repliedComment = ContextEF.RepliedComments.Where(x => x.IdComment == id).ToList();
+            if (repliedComment is not null)
+            {
+            List<ReadRepliedCommentDto> readDto = _mapper.Map<List<ReadRepliedCommentDto>>(repliedComment);
+            return readDto;
+            }
+            throw new NotImplementedException();
+            
         } 
         public async Task<bool> DeleteCommentByIdAsync(Guid id)
         {

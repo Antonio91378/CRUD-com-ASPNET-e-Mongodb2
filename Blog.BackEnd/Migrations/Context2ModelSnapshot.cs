@@ -24,7 +24,7 @@ namespace API.Blog.BackEnd.Migrations
 
             modelBuilder.Entity("API.Blog.BackEnd.Domain.Entities.Comment", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("IdComment");

@@ -11,7 +11,7 @@ namespace API.Blog.BackEnd.Domain.Entities
         public Guid Id { get; set; } 
         public string Autor { get; set; }
         public string CurrentComment { get; set; }
-        public List<RepliedComment>? RepliedComments { get; set; }
+        public virtual List<RepliedComment> RepliedComments { get; set; }
         public DateTime CriationData { get; set; }
     }
 }
