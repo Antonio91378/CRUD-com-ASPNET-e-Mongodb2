@@ -33,7 +33,7 @@ namespace API.Blog.BackEnd.Domain.Interfaces
                 .Include(x => x.CurrentComment);
             if (repliedComment is not null)
             {
-                List<ReadRepliedCommentDto> readDto = _mapper.Map<List<ReadRepliedCommentDto>>(repliedComment);
+                var readDto = _mapper.Map<List<ReadRepliedCommentDto>>(repliedComment);
             return readDto;
             }
             throw new NotImplementedException();

@@ -1,6 +1,8 @@
 ﻿using API.Blog.BackEnd.Domain.Dto.Request;
+using API.Blog.BackEnd.Domain.Dto.Response;
 using API.Blog.BackEnd.Domain.Entities;
 using API.Blog.BackEnd.Domain.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -11,10 +13,12 @@ namespace API.Blog.BackEnd.Controllers
     public class RepliedCommentsController : ControllerBase
     {
         readonly IRepliedCommentRepo _repliedCommentRepo;
+        readonly IMapper _mapper;
 
-        public RepliedCommentsController(IRepliedCommentRepo repliedCommentRepo)
+        public RepliedCommentsController(IRepliedCommentRepo repliedCommentRepo, IMapper mapper)
         {
             _repliedCommentRepo = repliedCommentRepo;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -36,7 +40,7 @@ namespace API.Blog.BackEnd.Controllers
                 problemDetails.Instance = HttpContext.Request.Path;
                 return NotFound(problemDetails);
             }
-
+            //var CommentDto = _mapper.Map<ReadCommentDto>(repliedComments);
             return Ok(repliedComments);
         }
         [HttpPost]
