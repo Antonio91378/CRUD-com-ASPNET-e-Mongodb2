@@ -1,14 +1,19 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
+using System.Text.Json.Serialization;
 
 namespace API.Blog.BackEnd.Domain.Entities
 {
     public class Comment
     {
         [Key]
-        public Guid? Id { get; set; } 
+        [Column("IdComment")]
+        public Guid Id { get; set; } 
         public string Autor { get; set; }
-        public string Conteudo { get; set; }
-        public DateTime DataCriacao { get; set; }
+        public string CurrentComment { get; set; }
+        [JsonIgnore]
+        public virtual List<RepliedComment> RepliedComments { get; set; }
+        public DateTime CriationData { get; set; }
     }
 }

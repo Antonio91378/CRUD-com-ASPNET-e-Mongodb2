@@ -24,24 +24,71 @@ namespace API.Blog.BackEnd.Migrations
 
             modelBuilder.Entity("API.Blog.BackEnd.Domain.Entities.Comment", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("IdComment");
 
                     b.Property<string>("Autor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Conteudo")
+                    b.Property<DateTime>("CriationData")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CurrentComment")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("API.Blog.BackEnd.Domain.Entities.RepliedComment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("IdRepliedComment");
+
+                    b.Property<string>("Autor")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("CriationData")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("IdComment")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdComment");
+
+                    b.ToTable("RepliedComments");
+                });
+
+            modelBuilder.Entity("API.Blog.BackEnd.Domain.Entities.RepliedComment", b =>
+                {
+                    b.HasOne("API.Blog.BackEnd.Domain.Entities.Comment", "CurrentComment")
+                        .WithMany("RepliedComments")
+                        .HasForeignKey("IdComment")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CurrentComment");
+                });
+
+            modelBuilder.Entity("API.Blog.BackEnd.Domain.Entities.Comment", b =>
+                {
+                    b.Navigation("RepliedComments");
                 });
 #pragma warning restore 612, 618
         }
