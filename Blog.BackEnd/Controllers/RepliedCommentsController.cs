@@ -23,7 +23,7 @@ namespace API.Blog.BackEnd.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<IEnumerable<RepliedComment>>> DisplayComments(Guid idComment)
+        public async Task<ActionResult> DisplayComments(Guid idComment)
         {
             var repliedComments = await _repliedCommentRepo.DisplayAllCommentAsync(idComment);
             if (repliedComments is null)

@@ -20,18 +20,20 @@ namespace API.Blog.BackEnd.Domain.Interfaces
 
         public async Task<List<ReadRepliedCommentDto>> CreateCommentAsync(CreateRepliedCommentDto repliedComment)
         {
-            RepliedComment comment = _mapper.Map<RepliedComment>(repliedComment);
+            /*RepliedComment comment = _mapper.Map<RepliedComment>(repliedComment);
             ContextEF.RepliedComments.Add(comment);
             ContextEF.SaveChangesAsync();
             var filteredComments = await DisplayAllCommentAsync(comment.IdComment);
-            return filteredComments;
+            return filteredComments;*/
+            return null;
         }
         public async Task<List<ReadRepliedCommentDto>> DisplayAllCommentAsync(Guid id)
         {
-           var repliedComment = ContextEF.RepliedComments.Where(x => x.IdComment == id).ToList();
+           var repliedComment = ContextEF.RepliedComments.Where(x => x.IdComment == id)
+                .Include(x => x.CurrentComment);
             if (repliedComment is not null)
             {
-            List<ReadRepliedCommentDto> readDto = _mapper.Map<List<ReadRepliedCommentDto>>(repliedComment);
+                List<ReadRepliedCommentDto> readDto = _mapper.Map<List<ReadRepliedCommentDto>>(repliedComment);
             return readDto;
             }
             throw new NotImplementedException();
