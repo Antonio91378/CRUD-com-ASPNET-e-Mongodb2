@@ -20,12 +20,11 @@ namespace API.Blog.BackEnd.Domain.Interfaces
 
         public async Task<List<ReadRepliedCommentDto>> CreateCommentAsync(CreateRepliedCommentDto repliedComment)
         {
-            /*RepliedComment comment = _mapper.Map<RepliedComment>(repliedComment);
+            RepliedComment comment = _mapper.Map<RepliedComment>(repliedComment);
             ContextEF.RepliedComments.Add(comment);
             ContextEF.SaveChangesAsync();
             var filteredComments = await DisplayAllCommentAsync(comment.IdComment);
-            return filteredComments;*/
-            return null;
+            return filteredComments;
         }
         public async Task<List<ReadRepliedCommentDto>> DisplayAllCommentAsync(Guid id)
         {

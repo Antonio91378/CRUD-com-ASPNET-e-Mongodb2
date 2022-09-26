@@ -11,10 +11,10 @@ namespace API.Blog.BackEnd.Domain.Entities
         [Column("IdRepliedComment")]
         public Guid Id { get; set; }
         [Required(ErrorMessage = "O Autor do comentario é obrigatório.")]
-        [MaxLength(30, ErrorMessage = "O tamanho maximo para o campo Nome é de 30 caracteres.")]
+        [MaxLength(50, ErrorMessage = "O tamanho maximo para o campo Nome é de 30 caracteres.")]
         public string Autor { get; set; }
         [Required(ErrorMessage = "O comentario é obrigatório.")]
-        [MaxLength(30, ErrorMessage = "O tamanho maximo para o campo Nome é de 30 caracteres.")]
+        [MaxLength(200, ErrorMessage = "O tamanho maximo para o campo Nome é de 30 caracteres.")]
         public string Content { get; set; }
         [ForeignKey("Comment")]
         [Required]
