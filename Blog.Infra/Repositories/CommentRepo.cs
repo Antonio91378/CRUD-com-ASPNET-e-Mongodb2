@@ -3,27 +3,34 @@ using API.Blog.BackEnd.Domain.Dto.Response;
 using API.Blog.BackEnd.Domain.Entities;
 using API.Blog.BackEnd.Domain.Interfaces;
 using API.Blog.BackEnd.Infra.Contexts;
+using API.Blog.BackEnd.Infra.Integrations;
 using AutoMapper;
 
 namespace API.Blog.BackEnd.Infra.Repositories
 {
     public class CommentRepo : ICommentRepo
     {
+        private readonly IIntegrationApiImageUploader _imageUploader;
+        private readonly IHttpClientFactory _httpClientFactory;
         private readonly Context2 ContextEF;
         private readonly IMapper _mapper;
-        public CommentRepo(IMapper mapper)
+        public CommentRepo(IMapper mapper, IHttpClientFactory httpClientFactory)
         {
             _mapper = mapper;
             ContextEF = new Context2();
+            _httpClientFactory = httpClientFactory;
+            _imageUploader = new IntegrationApiImageUploader(_httpClientFactory);
         }
 
     
         public async Task<Comment> CreateCommentAsync(CreateCommentDto currentComment)
         {
+            var solicitandoUpload = "";
+            solicitandoUpload = await _imageUploader.FazerUpload(currentComment.ImageContent);
             Comment comment = _mapper.Map<Comment>(currentComment);
+            comment.ImageContent = solicitandoUpload;
             ContextEF.Comments.AddAsync(comment);
             ContextEF.SaveChangesAsync();
-            //var commentCreated = await DisplayCommentByIdAsync(comment.Id);
             return comment;
         }
 

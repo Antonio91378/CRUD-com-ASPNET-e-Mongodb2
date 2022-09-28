@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
@@ -19,5 +20,6 @@ namespace API.Blog.BackEnd.Domain.Entities
         [JsonIgnore]
         public virtual List<RepliedComment> RepliedComments { get; set; }
         public DateTime CriationData { get; set; }
+        public string? ImageContent { get; set; }
     }
 }

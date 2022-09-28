@@ -66,9 +66,9 @@ namespace API.Blog.BackEnd.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> CreateComment([FromBody] CreateCommentDto comment)
+        public async Task<IActionResult> CreateComment([FromForm] CreateCommentDto comment)
         {
-            if (comment != null)
+            if (comment is not null)
             {
                 var res = await _commentRepo.CreateCommentAsync(comment);
                 return StatusCode((int)HttpStatusCode.Created, res);
@@ -83,6 +83,12 @@ namespace API.Blog.BackEnd.Controllers
                 problemDetails.Instance = HttpContext.Request.Path;
                 return BadRequest(problemDetails);
             }
+        }
+        [HttpGet]
+        [Route("/teste")]
+        public async Task<IActionResult> CreateComment([FromForm] IFormFile file)
+        {
+            return Ok("teste");
         }
     }
 }

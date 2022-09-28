@@ -1,7 +1,9 @@
 using API.Blog.BackEnd.ConfigExtensions;
 using API.Blog.BackEnd.Domain.Interfaces;
 using API.Blog.BackEnd.Infra.Contexts;
+using API.Blog.BackEnd.Infra.Integrations;
 using API.Blog.BackEnd.Infra.Repositories;
+using API.Blog.BackEnd.Service;
 using Blog.Domain.Interfaces;
 using Blog.Service;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +14,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IPostService, PostService>();
 
+builder.Services.AddScoped<ICommentService, CommentService>();
+
 builder.Services.AddScoped<ICommentRepo, CommentRepo>();
 
 builder.Services.AddScoped<IRepliedCommentRepo, RepliedCommentRepo>();
+
+builder.Services.AddScoped<IIntegrationApiImageUploader, IntegrationApiImageUploader>();
+
+
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

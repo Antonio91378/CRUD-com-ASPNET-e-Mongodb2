@@ -12,5 +12,10 @@ namespace Blog.Utils
             Configuration configuration = new Configuration();
             return configuration.ConfiguracaoDoArquivoAppSettings["Database2:ConnectionString2"];
         }
+        public static string GetForeingApi()
+        {
+            Configuration configuration = new Configuration();
+            return configuration.ConfiguracaoDoArquivoAppSettings["ApiImageUploader"];
+        }
     }
 }

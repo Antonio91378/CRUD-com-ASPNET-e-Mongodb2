@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,7 +11,8 @@ namespace API.Blog.BackEnd.Domain.Dto.Request
     public class CreateCommentDto
     {
         public string Autor { get; set; }
-        [MaxLength(30, ErrorMessage = "O tamanho maximo para o campo Nome é de 30 caracteres.")]
+        [MaxLength(200, ErrorMessage = "O tamanho maximo para o campo Nome é de 200 caracteres.")]
         public string CurrentComment { get; set; }
+        public  IFormFile? ImageContent { get; set; }
     }
 }

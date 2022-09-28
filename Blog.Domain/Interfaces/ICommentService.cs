@@ -1,4 +1,5 @@
 ﻿using API.Blog.BackEnd.Domain.Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,11 @@ namespace API.Blog.BackEnd.Domain.Interfaces
 {
     public interface ICommentService
     {
-        Task<Guid?> CreateCommentAsync(Comment comment);
-        Task<List<Comment>> DisplayAllCommentAsync();
-        Task<Comment> DisplayCommentByIdAsync(Guid id);
-        Task DeleteCommentByIdAsync(Guid id);
+        /* Task<Guid?> CreateCommentAsync(Comment comment);
+         Task<List<Comment>> DisplayAllCommentAsync();
+         Task<Comment> DisplayCommentByIdAsync(Guid id);
+         Task DeleteCommentByIdAsync(Guid id);
+        */
+        Task<string> FazerUploadDeImagem(IFormFile arquivo);
     }
 }
